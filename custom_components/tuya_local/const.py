@@ -1,4 +1,4 @@
-DOMAIN = "tuya_local"
+DOMAIN = "tuya_local_custom"
 DATA_STORE = "store"
 
 CONF_DEVICE_ID = "device_id"

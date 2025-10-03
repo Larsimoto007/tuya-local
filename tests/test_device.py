@@ -21,7 +21,7 @@ class TestDevice(IsolatedAsyncioTestCase):
         self.hass = hass_patcher.start()
         self.hass().is_running = True
         self.hass().is_stopping = False
-        self.hass().data = {"tuya_local": {}}
+        self.hass().data = {"tuya_local_custom": {}}
 
         def job(func, *args):
             print(f"{args}")
@@ -71,7 +71,7 @@ class TestDevice(IsolatedAsyncioTestCase):
         self.assertEqual(
             self.subject.device_info,
             {
-                "identifiers": {("tuya_local", self.mock_api().id)},
+                "identifiers": {("tuya_local_custom", self.mock_api().id)},
                 "name": "Some name",
                 "manufacturer": "Tuya",
             },
