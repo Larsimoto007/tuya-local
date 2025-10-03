@@ -4,33 +4,33 @@ from uuid import uuid4
 
 from homeassistant.helpers.entity import EntityCategory
 
-from custom_components.tuya_local.alarm_control_panel import TuyaLocalAlarmControlPanel
-from custom_components.tuya_local.binary_sensor import TuyaLocalBinarySensor
-from custom_components.tuya_local.button import TuyaLocalButton
-from custom_components.tuya_local.camera import TuyaLocalCamera
-from custom_components.tuya_local.climate import TuyaLocalClimate
-from custom_components.tuya_local.cover import TuyaLocalCover
-from custom_components.tuya_local.event import TuyaLocalEvent
-from custom_components.tuya_local.fan import TuyaLocalFan
-from custom_components.tuya_local.helpers.device_config import (
+from custom_components.tuya_local_custom.alarm_control_panel import TuyaLocalAlarmControlPanel
+from custom_components.tuya_local_custom.binary_sensor import TuyaLocalBinarySensor
+from custom_components.tuya_local_custom.button import TuyaLocalButton
+from custom_components.tuya_local_custom.camera import TuyaLocalCamera
+from custom_components.tuya_local_custom.climate import TuyaLocalClimate
+from custom_components.tuya_local_custom.cover import TuyaLocalCover
+from custom_components.tuya_local_custom.event import TuyaLocalEvent
+from custom_components.tuya_local_custom.fan import TuyaLocalFan
+from custom_components.tuya_local_custom.helpers.device_config import (
     TuyaDeviceConfig,
     possible_matches,
 )
-from custom_components.tuya_local.humidifier import TuyaLocalHumidifier
-from custom_components.tuya_local.lawn_mower import TuyaLocalLawnMower
-from custom_components.tuya_local.light import TuyaLocalLight
-from custom_components.tuya_local.lock import TuyaLocalLock
-from custom_components.tuya_local.number import TuyaLocalNumber
-from custom_components.tuya_local.remote import TuyaLocalRemote
-from custom_components.tuya_local.select import TuyaLocalSelect
-from custom_components.tuya_local.sensor import TuyaLocalSensor
-from custom_components.tuya_local.siren import TuyaLocalSiren
-from custom_components.tuya_local.switch import TuyaLocalSwitch
-from custom_components.tuya_local.text import TuyaLocalText
-from custom_components.tuya_local.time import TuyaLocalTime
-from custom_components.tuya_local.vacuum import TuyaLocalVacuum
-from custom_components.tuya_local.valve import TuyaLocalValve
-from custom_components.tuya_local.water_heater import TuyaLocalWaterHeater
+from custom_components.tuya_local_custom.humidifier import TuyaLocalHumidifier
+from custom_components.tuya_local_custom.lawn_mower import TuyaLocalLawnMower
+from custom_components.tuya_local_custom.light import TuyaLocalLight
+from custom_components.tuya_local_custom.lock import TuyaLocalLock
+from custom_components.tuya_local_custom.number import TuyaLocalNumber
+from custom_components.tuya_local_custom.remote import TuyaLocalRemote
+from custom_components.tuya_local_custom.select import TuyaLocalSelect
+from custom_components.tuya_local_custom.sensor import TuyaLocalSensor
+from custom_components.tuya_local_custom.siren import TuyaLocalSiren
+from custom_components.tuya_local_custom.switch import TuyaLocalSwitch
+from custom_components.tuya_local_custom.text import TuyaLocalText
+from custom_components.tuya_local_custom.time import TuyaLocalTime
+from custom_components.tuya_local_custom.vacuum import TuyaLocalVacuum
+from custom_components.tuya_local_custom.valve import TuyaLocalValve
+from custom_components.tuya_local_custom.water_heater import TuyaLocalWaterHeater
 
 DEVICE_TYPES = {
     "alarm_control_panel": TuyaLocalAlarmControlPanel,
@@ -64,7 +64,7 @@ class TuyaDeviceTestCase(IsolatedAsyncioTestCase):
 
     def setUpForConfig(self, config_file, payload):
         """Perform setup tasks for every test."""
-        device_patcher = patch("custom_components.tuya_local.device.TuyaLocalDevice")
+        device_patcher = patch("custom_components.tuya_local_custom.device.TuyaLocalDevice")
         self.addCleanup(device_patcher.stop)
         self.mock_device = device_patcher.start()
         self.dps = payload.copy()
