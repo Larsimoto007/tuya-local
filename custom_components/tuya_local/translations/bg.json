@@ -1,5 +1,5 @@
 {
-    "title": "Tuya Local",
+    "title": "Tuya Local Custom",
     "config": {
         "step": {
             "user": {
@@ -628,7 +628,6 @@
                     "6d": "6 дни",
                     "7d": "7 дни"
                 }
-
             },
             "temperature_unit": {
                 "name": "Температурна единица",

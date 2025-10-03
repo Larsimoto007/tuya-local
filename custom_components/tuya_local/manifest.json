@@ -1,6 +1,6 @@
 {
-    "domain": "tuya_local",
-    "name": "Tuya Local",
+    "domain": "tuya_local_custom",
+    "name": "Tuya Local Custom",
     "codeowners": [
         "@make-all"
     ],
