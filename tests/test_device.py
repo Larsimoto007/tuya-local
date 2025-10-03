@@ -4,7 +4,7 @@ from unittest.mock import ANY, AsyncMock, Mock, call, patch
 
 from homeassistant.const import EVENT_HOMEASSISTANT_STARTED, EVENT_HOMEASSISTANT_STOP
 
-from custom_components.tuya_local_custom.device import TuyaLocalDevice
+from custom_components.tuya_local.device import TuyaLocalDevice
 
 from .const import EUROM_600_HEATER_PAYLOAD
 
@@ -21,7 +21,7 @@ class TestDevice(IsolatedAsyncioTestCase):
         self.hass = hass_patcher.start()
         self.hass().is_running = True
         self.hass().is_stopping = False
-        self.hass().data = {"tuya_local_custom": {}}
+        self.hass().data = {"tuya_local": {}}
 
         def job(func, *args):
             print(f"{args}")
@@ -34,7 +34,7 @@ class TestDevice(IsolatedAsyncioTestCase):
         self.addCleanup(sleep_patcher.stop)
         self.mock_sleep = sleep_patcher.start()
 
-        lock_patcher = patch("custom_components.tuya_local_custom.device.Lock")
+        lock_patcher = patch("custom_components.tuya_local.device.Lock")
         self.addCleanup(lock_patcher.stop)
         self.mock_lock = lock_patcher.start()
 
@@ -71,7 +71,7 @@ class TestDevice(IsolatedAsyncioTestCase):
         self.assertEqual(
             self.subject.device_info,
             {
-                "identifiers": {("tuya_local_custom", self.mock_api().id)},
+                "identifiers": {("tuya_local", self.mock_api().id)},
                 "name": "Some name",
                 "manufacturer": "Tuya",
             },

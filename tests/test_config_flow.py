@@ -8,11 +8,11 @@ from homeassistant.const import CONF_HOST, CONF_NAME
 from homeassistant.data_entry_flow import FlowResultType
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.tuya_local_custom import (
+from custom_components.tuya_local import (
     async_migrate_entry,
     config_flow,
 )
-from custom_components.tuya_local_custom.const import (
+from custom_components.tuya_local.const import (
     CONF_DEVICE_CID,
     CONF_DEVICE_ID,
     CONF_LOCAL_KEY,
@@ -34,7 +34,7 @@ def auto_enable_custom_integrations(enable_custom_integrations):
 @pytest.fixture(autouse=True)
 def prevent_task_creation():
     with patch(
-        "custom_components.tuya_local_custom.device.TuyaLocalDevice.register_entity",
+        "custom_components.tuya_local.device.TuyaLocalDevice.register_entity",
     ):
         yield
 
@@ -43,7 +43,7 @@ def prevent_task_creation():
 def bypass_setup():
     """Prevent actual setup of the integration after config flow."""
     with patch(
-        "custom_components.tuya_local_custom.async_setup_entry",
+        "custom_components.tuya_local.async_setup_entry",
         return_value=True,
     ):
         yield
@@ -85,7 +85,7 @@ async def test_init_entry(hass, bypass_data_fetch):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.setup_device")
+@patch("custom_components.tuya_local.setup_device")
 async def test_migrate_entry(mock_setup, hass):
     """Test migration from old entry format."""
     mock_device = MagicMock()
@@ -268,7 +268,7 @@ async def test_flow_user_init(hass):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.TuyaLocalDevice")
+@patch("custom_components.tuya_local.config_flow.TuyaLocalDevice")
 async def test_async_test_connection_valid(mock_device, hass):
     """Test that device is returned when connection is valid."""
     mock_instance = AsyncMock()
@@ -293,7 +293,7 @@ async def test_async_test_connection_valid(mock_device, hass):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.TuyaLocalDevice")
+@patch("custom_components.tuya_local.config_flow.TuyaLocalDevice")
 async def test_async_test_connection_for_subdevice_valid(mock_device, hass):
     """Test that subdevice is returned when connection is valid."""
     mock_instance = AsyncMock()
@@ -319,7 +319,7 @@ async def test_async_test_connection_for_subdevice_valid(mock_device, hass):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.TuyaLocalDevice")
+@patch("custom_components.tuya_local.config_flow.TuyaLocalDevice")
 async def test_async_test_connection_invalid(mock_device, hass):
     """Test that None is returned when connection is invalid."""
     mock_instance = AsyncMock()
@@ -338,7 +338,7 @@ async def test_async_test_connection_invalid(mock_device, hass):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.async_test_connection")
+@patch("custom_components.tuya_local.config_flow.async_test_connection")
 async def test_flow_user_init_invalid_config(mock_test, hass):
     """Test errors populated when config is invalid."""
     mock_test.return_value = None
@@ -369,7 +369,7 @@ def setup_device_mock(mock, failure=False, type="test"):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.async_test_connection")
+@patch("custom_components.tuya_local.config_flow.async_test_connection")
 async def test_flow_user_init_data_valid(mock_test, hass):
     """Test we advance to the next step when connection config is valid."""
     mock_device = MagicMock()
@@ -578,7 +578,7 @@ async def test_options_flow_init(hass, bypass_data_fetch):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.async_test_connection")
+@patch("custom_components.tuya_local.config_flow.async_test_connection")
 async def test_options_flow_modifies_config(mock_test, hass, bypass_setup):
     mock_device = MagicMock()
     mock_test.return_value = mock_device
@@ -627,7 +627,7 @@ async def test_options_flow_modifies_config(mock_test, hass, bypass_setup):
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.async_test_connection")
+@patch("custom_components.tuya_local.config_flow.async_test_connection")
 async def test_options_flow_fails_when_connection_fails(
     mock_test, hass, bypass_data_fetch
 ):
@@ -668,7 +668,7 @@ async def test_options_flow_fails_when_connection_fails(
 
 
 @pytest.mark.asyncio
-@patch("custom_components.tuya_local_custom.config_flow.async_test_connection")
+@patch("custom_components.tuya_local.config_flow.async_test_connection")
 async def test_options_flow_fails_when_config_is_missing(mock_test, hass):
     mock_device = MagicMock()
     mock_test.return_value = mock_device

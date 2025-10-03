@@ -76,7 +76,7 @@ properly over Matter.
 
 A list of currently supported devices can be found in the [DEVICES.md](https://github.com/make-all/tuya-local/blob/main/DEVICES.md) file.
 
-Documentation on building a device configuration file is in [/custom_components/tuya_local_custom/devices/README.md](https://github.com/make-all/tuya-local/blob/main/custom_components/tuya_local_custom/devices/README.md)
+Documentation on building a device configuration file is in [/custom_components/tuya_local/devices/README.md](https://github.com/make-all/tuya-local/blob/main/custom_components/tuya_local/devices/README.md)
 
 If your device is not listed, you can find the information required to add a configuration for it in the following locations:
 
@@ -111,7 +111,7 @@ the integration will be available to install like any other.
 After installing, you can easily configure your devices using the Integrations configuration UI.  Go to Settings / Devices & Services and press the Add Integration button, or click the shortcut button below (requires My Homeassistant configured).
 
 [![Add Integration to your Home Assistant
-instance.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=tuya_local_custom)
+instance.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=tuya_local)
 
 ### Choose your configuration path
 
@@ -239,7 +239,7 @@ If your device connects via a hub (eg. battery powered water timers) you have to
 Beyond contributing device configs, here are some areas that could benefit from more hands:
 
 1. Unit tests. This integration is mostly unit-tested thanks to the upstream project, but there are a few more to complete. Feel free to use existing specs as inspiration and the Sonar Cloud analysis to see where the gaps are.
-2. Once unit tests are complete, the next task is to properly evaluate against the Home Assistant quality scale.
+2. Once unit tests are complete, the next task is to properly evaluate against the Home Assistant quality scale. 
 3. Discovery. Local discovery is currently limited to finding the IP address in the cloud assisted config. Performing discovery in background would allow notifications to be raised when new devices are noticed on the network, and would provide a productKey for the manual config method to use when matching device configs.
 
 

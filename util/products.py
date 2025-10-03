@@ -2,7 +2,7 @@
 
 import sys
 
-from custom_components.tuya_local_custom.helpers.device_config import (
+from custom_components.tuya_local.helpers.device_config import (
     TuyaDeviceConfig,
     available_configs,
 )
